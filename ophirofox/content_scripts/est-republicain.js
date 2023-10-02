@@ -1,27 +1,24 @@
-function extractKeywords() {
-    return document.querySelector("h1").textContent;
-}
-
 async function createLink() {
-    const a = await ophirofoxEuropresseLink(extractKeywords());
-    a.classList.add("ophirofox-europresse");
-    a.style.cssText = 'color:white;border-bottom:none';
+    const a = await ophirofoxEuropresseLink();
+    a.classList.add();
     return a;
 }
 
 
 function findPremiumBanner() {
-    const title = document.querySelector("p3-element p3-dynamic p3-button-wrapper p3-action");
+    const title = document.querySelector(".non-paywall");
     if (!title) return null;
     const elems = title.parentElement.querySelectorAll("span");
-    return [...elems].find(d => d.textContent.includes("Je m'abonne"))
+    return [...elems].find(d => d.classList.contains("flagPaid"))
 }
 
 async function onLoad() {
 	const premiumBanner = findPremiumBanner();
     if (!premiumBanner) return;
     const head = document.querySelector("h1");
-    head.after(await createLink());
+    head.before(await createLink());
 }
 
 onLoad().catch(console.error);
+
+
