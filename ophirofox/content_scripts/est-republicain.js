@@ -11,7 +11,7 @@ async function createLink() {
 
 
 function findPremiumBanner() {
-    const title = document.querySelector(".su-premium-info");
+    const title = document.querySelector("p3-element p3-dynamic p3-button-wrapper p3-action");
     if (!title) return null;
     const elems = title.parentElement.querySelectorAll("span");
     return [...elems].find(d => d.textContent.includes("Je m'abonne"))
